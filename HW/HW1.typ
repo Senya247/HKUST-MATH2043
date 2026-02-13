@@ -18,14 +18,6 @@
     content,
 )
 
-// #let br_c(it: content): it  => {
-//   bracket.r it.body
-// }
-
-$
-    bracket 5 bracket.r
-$
-
 #show title: set text(size: 17pt)
 #show title: set align(center)
 #show title: set block(below: 1.2em)
