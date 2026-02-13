@@ -4,6 +4,8 @@
 
 #set text(font: "Times New Roman")
 #set par(justify: true)
+// #set math.lr(size: 1em)
+
 
 #let indent = pad.with(left: 1em)
 
@@ -15,6 +17,14 @@
     numbering: "(1)",
     content,
 )
+
+// #let br_c(it: content): it  => {
+//   bracket.r it.body
+// }
+
+$
+    bracket 5 bracket.r
+$
 
 #show title: set text(size: 17pt)
 #show title: set align(center)
@@ -91,7 +101,15 @@ Suprema is $2+sqrt(3)$.
 No suprema, set $n$ to $1$, $m$ is has no upper bound, making $m / n$ grow to infinity.
 
 == §1.33
-TODO
+=== =>
+#indent[
+    === 1
+    supremum is the least *upper bound*, therefore if $lambda$ = $"sup"X, x<=lambda$ for all $x in X$. \
+]
+#indent[
+    === 2
+    Let $x_n = 1/n$. For every $n$, we have $r in X$ such that $lambda - x_n<r<lambda$, because otherwise $lambda$ would not be the least upper bound. $lambda - x_n ->lambda$.
+]
 
 == §1.34(8)
 $|x - y| <= c => x-y<=c$. For any $epsilon>0$, choose $x_epsilon: x_epsilon > "sup"X - epsilon$.
@@ -118,7 +136,8 @@ $ "inf"X & <=x<="sup"X ", and" "inf"Y<=y<="sup"Y \
 Symmetrically, $y-x<=c$. $square$
 
 == §1.40
-TODO
+By Bolzano-Weierstrass, there is a convering subsequence $x_n_k$. Consider $y_n_k$, Since $y_n$ is bounded, so is $y_n_k$, therefore, it has a converging subsequence $y_n_k_i$. $x_n_k_i$ also converges.For somplicity, let $m_i = n_k_i$, then $m_i$ is the common index. \
+To extend this to an arbitrary number of sequences, we use induction. Let the sequences be $x_n^{1}, x_n^{2}, dots.h, x_n^{r}$. Base cause is $r=1$, trivial by Bolzano-Weierstrass. Assume true for $r$, then there is a common index sequence $n_k$ such that $attach(x, tr: {1}, br: n_k), attach(x, tr: {2}, br: n_k), dots.h, attach(x, tr: { r }, br: n_k)$ all converge. Consider the sequence $attach(x, tr: {r+1}, br: n_k)$. It has a converging subsequence $attach(x, tr: {r+1}, br: n_k_i)$. Now let $m_i=n_k_i$. For $r'<=r, attach(x, tr: {r'}, br: m_i)$ converges. The new common index is $m_i$.
 
 == §1.45(5)
 The function is periodic for every 12 indices. Let
@@ -197,8 +216,35 @@ $
 $
 $square$
 
-== §1.49(8) TODO
-== §1.51 TODO
+== §1.49(8)
+This follow directly from 1.49(7), it is the contrapositive of (7).
+$
+    exists N forall m,n x_m>=y_n &=> limsup_(n->infinity) x_n>=liminf_(n->infinity)y_n \
+    limsup_(n->infinity)x_n < liminf_(n->infinity)y_n &=>not(exists N forall m, n #h(0.2em) x_m>=y_n) \
+    &=> forall exists m,n #h(0.2em) x_m<y_n
+$
+$square$
+
+== §1.51
+#indent[
+    === 1
+    Let $limsup_(n->infinity)abs(x_(n+1)/x_n) = r < 1$. We know that there must be an $N$ such that for all $n>N$, $abs(x_(n+1)/(x_n)) < r$. (Not sure if this needs to be proved, but in short, if there were infinitely many $abs(x_(n+1)/(x_n)) >= r$, then there would be a converging subsequence with limit $>=r$ which would belong to LIM, so contradiction). \
+    for any $k>0$, we have
+    $
+        abs(x_(N+k)) & < r abs(x_(N+k-1)) < r^2 abs(x_(N+k-2)) < dots.h < r^k abs(x_N) \
+        abs(x_(N+k)) & <r^k abs(x_N)
+    $
+    Since $abs(r)<1$, $r^k -> 0$. Thus, $abs(x_(N+k))->0$, and therefore $x_n->0$.
+]
+#indent[
+    === 2
+    Let $liminf_(n->infinity) abs(x_(n+1)/x_n) = r > 1$, There must be $N$ such that $n>N => abs(x_(n+1)/(x_n)) > r$.(Similar proof as the one above). Then
+    $
+        abs(x_(N+k)) & > r abs(x_(N+k-1)) > r^2 abs(x_(N+k-2)) > dots.h > r^k abs(x_N) \
+        abs(x_(N+k)) & > r^k abs(x_N)
+    $
+    Hence $x_n->infinity$. $square$
+]
 
 == §1.55
 #indent[
