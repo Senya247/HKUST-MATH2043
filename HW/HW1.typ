@@ -129,7 +129,6 @@ $
     "sup"X - "sup"Y & <= c \
 $
 Symmetrically, $"sup"Y - "inf"X <= c$ and $"sup"Y - "sup"$. Hence, $|"sup"X-"inf"Y|<=c$ and #linebreak()$|"sup"X-"sup"Y|<=c$. \
-#pagebreak()
 Conversely,
 $ "inf"X & <=x<="sup"X ", and" "inf"Y<=y<="sup"Y \
    x-y & <="sup"X-"sup"Y <= c $:
